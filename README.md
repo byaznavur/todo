@@ -78,26 +78,3 @@
      );
    }
    ```
-
-### Amaliy mashqlar
-
-1. **Elementga scroll qilish:**
-
-   - `useRef` orqali sahifaning ma'lum bir qismiga scroll qiladigan tugmani yarating.
-
-2. **Input maydoniga fokus berish:**
-
-   - Bir nechta input maydonlariga ega formani yarating. Forma yuborilganda, birinchi input maydoniga fokus tushsin.
-
-3. **Oldingi holatni saqlash:**
-
-   - `useRef` yordamida joriy qiymat va oldingi qiymatni ko‘rsatuvchi counter yarating.
-
-4. **Stopwatch:**
-
-   - `useRef`ni interval ID-ni saqlash uchun ishlatib, start va stop funksiyalariga ega bo‘lgan stopwatch yarating.
-
-5. **Fayl yuklash preview:**
-   - `useRef` orqali fayl yuklash input elementiga kirish imkonini beradigan va tanlangan rasmni preview qiladigan komponent yarating.
-
-Bu mashqlar sizga `useRef`ni ReactJS da qanday samarali foydalanishni tushunishingizga yordam beradi.
