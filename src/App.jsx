@@ -2,30 +2,42 @@ import { useState, useRef } from "react";
 import ListItem from "./UI/Lists/ListItem";
 
 const App = () => {
-  const inputRef = useRef("");
+  const inputRef = useRef(""); // inputdan qiymatni olish uchun
 
-  const [datas, setDatas] = useState([
-    { id: 1, title: "Hello World", done: false },
+  const [todos, setTodos] = useState([
+    { id: 1, title: "Reading books", done: false },
   ]);
 
-  const addTask = () => {
-    const newTask = {
+  const addTodo = () => {
+    const newTodo = {
       id: Date.now(),
       title: inputRef.current.value,
       done: false,
     };
 
-    if (newTask.title.trim().length) {
-      setDatas([...datas, newTask]);
+    if (newTodo.title.trim().length) {
+      setTodos([...todos, newTodo]);
       inputRef.current.value = "";
     } else {
       alert("Enter your a task title");
     }
   };
-  const deleteTask = (id) => {
-    const res = datas.filter((data) => data.id !== id);
-    setDatas(res);
+  const deleteTodo = (id) => {
+    let newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
   };
+
+  const doneTodo = (id) => {
+    let doneTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, done: true };
+      }
+      return todo;
+    });
+
+    setTodos(doneTodos);
+  };
+
   return (
     <div className="container mx-auto">
       <div className="wrapper mx-auto w-[800px] mt-8  bg-orange-400 p-2">
@@ -40,7 +52,7 @@ const App = () => {
               className="grow focus:outline-none py-2 ps-4 rounded-lg focus:shadow-lg"
             />
             <button
-              onClick={() => addTask()}
+              onClick={() => addTodo()}
               className="bg-black text-white px-2 rounded-md active:bg-orange-400 font-semibold"
             >
               Add new Task
@@ -49,12 +61,13 @@ const App = () => {
 
           <div className="todo-body py-2 my-3">
             <ul className="">
-              {datas.length ? (
-                datas.map((data, i) => (
+              {todos.length ? (
+                todos.map((todo, i) => (
                   <ListItem
-                    deleteTask={deleteTask}
-                    {...data}
-                    key={i}
+                    deleteTodo={deleteTodo}
+                    doneTodo={doneTodo}
+                    {...todo}
+                    key={todo.id}
                     index={i}
                   />
                 ))
