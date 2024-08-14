@@ -1,5 +1,9 @@
+import { useRef } from "react";
+
 const App = () => {
-  return <div>Todo App</div>;
+  const textRef = useRef();
+  console.log(textRef.current);
+  return <div></div>;
 };
 
 export default App;
